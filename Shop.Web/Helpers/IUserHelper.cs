@@ -1,6 +1,4 @@
-﻿
-
-namespace Shop.Web.Helpers
+﻿namespace Shop.Web.Helpers
 {
     using System.Threading.Tasks;
     using Data.Entities;
