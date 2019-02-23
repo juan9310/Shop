@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shop.UIForms\Shop.UIForms.csproj">
-      <Project>{1FEFAE8E-6755-4F59-92DB-061373CBD004}</Project>
+      <Project>{87941E53-13E6-4736-A9B0-4D0CB2E331CA}</Project>
       <Name>Shop.UIForms</Name>
     </ProjectReference>
   </ItemGroup>
