@@ -13,6 +13,7 @@
     using Helpers;
     using Microsoft.IdentityModel.Tokens;
     using System.Text;
+    using Shop.Web.Data.Repositories;
 
     public class Startup
     {
@@ -59,10 +60,9 @@
             });
 
             services.AddTransient<SeedDb>();
-
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
-
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IUserHelper, UserHelper>();
 
 
@@ -71,6 +71,12 @@
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/NotAuthorized";
+                options.AccessDeniedPath = "/Account/NotAuthorized";
             });
 
 
@@ -90,6 +96,7 @@
                 app.UseHsts();
             }
 
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
